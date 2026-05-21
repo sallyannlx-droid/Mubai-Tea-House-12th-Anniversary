@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>慕白茶舍 · 十二周年 · 二〇一四—二〇二六</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --charcoal: #2d2d2d;
+            --stone: #4a4a4a;
+            --warm-gray: #8a8279;
+            --sand: #c4b8a8;
+            --paper: #f5f0e8;
+            --rice: #faf8f4;
+            --clay: #b5a89a;
+            --line: rgba(180, 170, 155, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--rice);
+            color: var(--charcoal);
+            line-height: 1.9;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 首屏 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            background: linear-gradient(180deg, var(--rice) 0%, var(--paper) 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 1px; height: 80px;
+            background: var(--line);
+        }
+        .hero-year {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--warm-gray);
+            letter-spacing: 0.3em;
+            margin-bottom: 40px;
+            margin-top: 60px;
+        }
+        .hero-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 300;
+            color: var(--ink);
+            letter-spacing: 0.15em;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--stone);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+        .hero-divider {
+            width: 40px; height: 1px;
+            background: var(--sand);
+            margin: 0 auto 40px;
+        }
+        .hero-location {
+            font-size: 13px;
+            color: var(--warm-gray);
+            letter-spacing: 0.25em;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: var(--sand);
+            letter-spacing: 0.2em;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* 视频区 */
+        .video-hero {
+            padding: 0;
+            margin: 0;
+            background: var(--paper);
+        }
+        .video-hero video {
+            width: 100%;
+            display: block;
+        }
+        .video-caption {
+            text-align: center;
+            font-size: 12px;
+            color: var(--warm-gray);
+            letter-spacing: 0.15em;
+            padding: 20px;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* 通用区块 */
+        .section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 100px 32px;
+            position: relative;
+        }
+        .section-number {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 12px;
+            color: var(--sand);
+            letter-spacing: 0.3em;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 400;
+            color: var(--ink);
+            letter-spacing: 0.12em;
+            margin-bottom: 48px;
+            line-height: 1.5;
+        }
+        .section-title span {
+            display: block;
+            font-size: 14px;
+            color: var(--warm-gray);
+            letter-spacing: 0.2em;
+            margin-top: 8px;
+            font-weight: 300;
+        }
+
+        /* 引言 */
+        .quote-block {
+            border-left: 1px solid var(--sand);
+            padding-left: 32px;
+            margin: 48px 0;
+        }
+        .quote-block p {
+            font-size: 16px;
+            color: var(--stone);
+            line-height: 2.2;
+            font-weight: 300;
+        }
+        .quote-author {
+            display: block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--warm-gray);
+            letter-spacing: 0.15em;
+        }
+
+        /* 正文 */
+        .body-text {
+            font-size: 15px;
+            color: var(--charcoal);
+            line-height: 2.2;
+            font-weight: 300;
+            text-align: justify;
+        }
+        .body-text p { margin-bottom: 24px; }
+
+        /* 图片展示 */
+        .image-showcase {
+            margin: 40px -32px;
+            padding: 0 32px;
+        }
+        .image-showcase img {
+            width: 100%;
+            display: block;
+            filter: grayscale(15%) contrast(95%);
+            transition: filter 0.6s ease;
+        }
+        .image-showcase img:hover {
+            filter: grayscale(0%) contrast(100%);
+        }
+        .image-caption {
+            font-size: 12px;
+            color: var(--warm-gray);
+            letter-spacing: 0.1em;
+            margin-top: 12px;
+            text-align: center;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* 图片网格 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 40px -32px;
+            padding: 0 32px;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(15%);
+            transition: filter 0.5s ease;
+        }
+        .photo-grid img:hover {
+            filter: grayscale(0%);
+        }
+        .photo-grid.triple {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .photo-grid.triple img {
+            height: 180px;
+        }
+
+        /* 见证者卡片 */
+        .testimony-card {
+            background: var(--paper);
+            padding: 40px 36px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .testimony-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 36px;
+            width: 30px; height: 1px;
+            background: var(--sand);
+        }
+        .testimony-label {
+            font-size: 11px;
+            color: var(--warm-gray);
+            letter-spacing: 0.25em;
+            margin-bottom: 20px;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .testimony-text {
+            font-size: 14px;
+            color: var(--stone);
+            line-height: 2.4;
+            font-weight: 300;
+        }
+        .testimony-text p { margin-bottom: 16px; }
+
+        /* 分隔 */
+        .spacer {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .spacer-line {
+            width: 1px;
+            height: 40px;
+            background: var(--line);
+        }
+
+        /* 茶席助力 */
+        .tea-ceremony {
+            background: var(--paper);
+            padding: 80px 32px;
+            margin: 0 -32px;
+        }
+        .signature-block {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--line);
+        }
+        .signature-name {
+            font-size: 18px;
+            color: var(--ink);
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+        }
+        .signature-title {
+            font-size: 13px;
+            color: var(--warm-gray);
+            letter-spacing: 0.1em;
+            line-height: 2;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 80px 24px 60px;
+            background: var(--paper);
+        }
+        .footer-line {
+            width: 30px; height: 1px;
+            background: var(--sand);
+            margin: 0 auto 40px;
+        }
+        .footer-text {
+            font-size: 13px;
+            color: var(--warm-gray);
+            letter-spacing: 0.2em;
+            line-height: 2.2;
+        }
+        .footer-brand {
+            font-size: 16px;
+            color: var(--stone);
+            letter-spacing: 0.3em;
+            margin-top: 32px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .section { padding: 60px 20px; }
+            .image-showcase { margin: 30px -20px; padding: 0 20px; }
+            .photo-grid { 
+                margin: 30px -20px; 
+                padding: 0 20px;
+                grid-template-columns: 1fr;
+            }
+            .photo-grid.triple { grid-template-columns: 1fr; }
+            .photo-grid img { height: 200px !important; }
+            .testimony-card { padding: 32px 24px; }
+            .quote-block { padding-left: 20px; }
+            .tea-ceremony { padding: 60px 20px; margin: 0 -20px; }
+        }
+
+        /* 淡入动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 首屏 ===== -->
+<section class="hero">
+    <div class="hero-year">二〇一四 · 二〇二六</div>
+    <h1 class="hero-title">慕白茶舍</h1>
+    <p class="hero-subtitle">十二周年 · 纪念茶礼</p>
+    <div class="hero-divider"></div>
+    <p class="hero-location">长治 · 二〇二六</p>
+    <div class="scroll-hint">展开记忆</div>
+</section>
+
+<!-- ===== 视频在最前面 ===== -->
+<section class="video-hero fade-in">
+    <video controls poster="linxi-pouring.jpg">
+        <source src="ceremony-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-caption">慕白茶舍 · 十二周年庆典 · 现场纪实</div>
+</section>
+
+<!-- ===== 壹 · 茶路 ===== -->
+<section class="section">
+    <span class="section-number fade-in">壹</span>
+    <h2 class="section-title fade-in">
+        茶路
+        <span>十七岁开始，一守十二年</span>
+    </h2>
+
+    <div class="body-text fade-in">
+        <p>十七岁入茶行，什么都不懂，就这样开始了。</p>
+        <p>没有茶单，没有茶资，只是把门打开，把茶泡好，请人进来坐。旁人不解，她只觉得，以茶养心，本是一件简单的事。</p>
+        <p>这一守，就是十二年。</p>
+    </div>
+
+    <div class="quote-block fade-in">
+        <p>她不是没有动摇过。命运兜转，坎坷不少，得罪过人，也失去过一些。但骨子里那股劲——敢爱敢恨，浑身是胆——从来没散。</p>
+    </div>
+
+    <div class="body-text fade-in">
+        <p>把打工攒下的钱交给父母翻修房子，把茶室打磨成一座道场，把每一个推门而入的人，当成值得被好好对待的客人。</p>
+        <p>十二年的免费茶，种下的是善缘，回响的是今天这满室的人。</p>
+    </div>
+
+    <!-- 白玲泡茶写真 -->
+    <div class="photo-grid fade-in">
+        <img src="bailing-pour-dark.png" alt="白玲斟茶">
+        <img src="bailing-pour-sunlight.png" alt="白玲泡茶">
+    </div>
+    <div class="photo-grid triple fade-in">
+        <img src="bailing-adding-tea.png" alt="白玲投茶">
+        <img src="bailing-tasting.png" alt="白玲品茶">
+        <img src="bailing-serving-cups.png" alt="白玲分茶">
+    </div>
+
+    <div class="spacer"><div class="spacer-line"></div></div>
+</section>
+
+<!-- ===== 贰 · 见证者说 ===== -->
+<section class="section">
+    <span class="section-number fade-in">贰</span>
+    <h2 class="section-title fade-in">
+        见证者说
+        <span>她的样子，我们都记得</span>
+    </h2>
+
+    <!-- 妹妹证言 -->
+    <div class="testimony-card fade-in">
+        <div class="testimony-label">— 妹妹</div>
+        <div class="testimony-text">
+            <p>本是弱女子却浑身是胆，骨子里都透着坚韧不服输之气。命运兜转，历经诸多坎坷却也从不抛弃不放弃，如今开始学会为自己而活，自信明媚一往无前。</p>
+        </div>
+    </div>
+
+    <!-- 家人证言 -->
+    <div class="testimony-card fade-in">
+        <div class="testimony-label">— 家人</div>
+        <div class="testimony-text">
+            <p>耿直担当的大姐，从小就被教育要顾着小的，要独立要能干。小小年纪外出打工攒钱为家里翻盖房子，条件好些又张罗为父母城里买房。本是弱女子却也敢想敢为、浑身是胆。</p>
+            <p>骨子里都透着坚韧不服输之气。命运兜转，历经诸多坎坷却也从不抛弃不放弃，如今开始学会为自己而活，不敷衍不将就，希望你呀越来越开心，越来越是你。</p>
+        </div>
+    </div>
+
+    <!-- 强子弟弟 -->
+    <div class="testimony-card fade-in">
+        <div class="testimony-label">— 强子弟弟</div>
+        <div class="testimony-text">
+            <p>收拾这个柜子就像扒开心给你看一样。三个红包是开业小包间收到的，我没有打开看，也没有问是谁的。</p>
+            <p>老三给我的时候，我只想告诉你：我有两个妹妹。大包间的姐妹都是十年以上。我们彼此经历过各自的低谷跟黑暗，陪伴走过一程的人。你不是一个人。</p>
+            <p>我是姐，你是弟弟。当我老师要我愿意学的时候，才真正的老师。我教你做人，你教我做茶。这段话，我哭着写的。</p>
+        </div>
+    </div>
+
+    <!-- 白玲寄语 -->
+    <div class="quote-block fade-in" style="margin-top: 60px;">
+        <p>请相信内心的渴望，哪怕它听起来不切实际；请相信时间的力量，哪怕此刻还未见光亮；也请相信自己独有的人生节奏，不必追赶他人的脚步。因为相信本身，就是最强的愿力。</p>
+        <span class="quote-author">— 白玲</span>
+    </div>
+
+    <div class="spacer"><div class="spacer-line"></div></div>
+</section>
+
+<!-- ===== 叁 · 那一天 ===== -->
+<section class="section">
+    <span class="section-number fade-in">叁</span>
+    <h2 class="section-title fade-in">
+        那一天
+        <span>茶汤是最好的语言</span>
+    </h2>
+
+    <div class="body-text fade-in">
+        <p>这一天，老友来了，新人来了，家人来了。没有喧哗的排场，只有袅袅茶香与一声"白玲，恭喜"。</p>
+        <p>蛋糕切开的那一刻，是十二年的一个句号，也是新征程的第一笔。</p>
+    </div>
+
+    <!-- 化妆花絮 -->
+    <div class="image-showcase fade-in">
+        <img src="behind-scenes-makeup.jpg" alt="白玲化妆准备">
+        <div class="image-caption">准备 · 化妆花絮</div>
+    </div>
+
+    <!-- 门口合影 -->
+    <div class="photo-grid fade-in">
+        <img src="gate-friend-teacup.jpg" alt="门口合影">
+        <img src="gate-friend-heart.jpg" alt="门口比心">
+    </div>
+    <div class="photo-grid fade-in">
+        <img src="gate-friends-trio.jpg" alt="三人合影">
+        <img src="gate-tea-room-balloons.jpg" alt="茶室气球">
+    </div>
+
+    <!-- 鲜花与展板 -->
+    <div class="photo-grid fade-in">
+        <img src="gift-flowers.jpg" alt="朋友赠花">
+        <img src="welcome-board.jpg" alt="庆典展板">
+    </div>
+
+    <!-- 林熙与朋友在门口 -->
+    <div class="image-showcase fade-in">
+        <img src="gate-linxi-friends.jpg" alt="林熙与白玲朋友在庆典门口">
+        <div class="image-caption">林熙与朋友们 · 庆典门口</div>
+    </div>
+
+    <!-- 大堂聊天 -->
+    <div class="image-showcase fade-in">
+        <img src="lobby-chat.jpg" alt="酒店大堂">
+        <div class="image-caption">茶室所在酒店大堂 · 宾朋相聚</div>
+    </div>
+
+    <!-- 开业茶室 -->
+    <div class="image-showcase fade-in">
+        <img src="tea-room-opening.jpg" alt="开业茶室">
+        <div class="image-caption">慕白茶舍 · 开业茶室</div>
+    </div>
+
+    <!-- 切蛋糕 -->
+    <div class="photo-grid fade-in">
+        <img src="cake-closeup.jpg" alt="十二周年蛋糕">
+        <img src="cake-cutting-kids.jpg" alt="白玲与孩子切蛋糕">
+    </div>
+
+    <div class="spacer"><div class="spacer-line"></div></div>
+</section>
+
+<!-- ===== 肆 · 茶席助力 ===== -->
+<section class="section">
+    <span class="section-number fade-in">肆</span>
+    <h2 class="section-title fade-in">
+        茶席助力
+        <span>一席茶，为十二年而泡</span>
+    </h2>
+
+    <div class="tea-ceremony fade-in">
+        <div class="body-text">
+            <p>庆典当日，礼安茶学主理人林熙专程赶来，亲执茶席，以一道道茶汤陪伴来宾度过这个安静的沸腾。</p>
+            <p>这一杯，泡的是十六年的茶行情谊，也是对好茶、好器、好生活最朴实的诠释。</p>
+        </div>
+    </div>
+
+    <!-- 林熙泡茶 -->
+    <div class="photo-grid fade-in">
+        <img src="linxi-pouring.jpg" alt="林熙注水">
+        <img src="linxi-smelling.jpg" alt="林熙闻香">
+    </div>
+    <div class="photo-grid fade-in">
+        <img src="linxi-serving-guests.jpg" alt="林熙接待">
+        <img src="linxi-tea-gathering.jpg" alt="茶席聚会">
+    </div>
+
+    <!-- 庆典用餐 -->
+    <div class="photo-grid fade-in">
+        <img src="banquet-three-ladies.jpg" alt="三人举杯">
+        <img src="banquet-tea-toast.jpg" alt="以茶代酒">
+    </div>
+    <div class="photo-grid fade-in">
+        <img src="banquet-table-talk.jpg" alt="席间交谈">
+        <img src="banquet-laughing.jpg" alt="欢声笑语">
+    </div>
+    <div class="photo-grid fade-in">
+        <img src="banquet-group-cheers.jpg" alt="集体举杯">
+        <img src="banquet-bailing-liuqiang.jpg" alt="白玲与刘强">
+    </div>
+    <div class="photo-grid fade-in">
+        <img src="banquet-toasting.jpg" alt="敬酒">
+        <img src="banquet-flower-arch.jpg" alt="花拱门下">
+    </div>
+
+    <div class="signature-block">
+        <div class="signature-name">林 熙</div>
+        <div class="signature-title">
+            礼安茶学 · 林熙茶录文化传播<br>
+            国家一级茶艺技师 · 一级评茶员<br>
+            云南茶山直供
+        </div>
+    </div>
+
+    <div class="spacer"><div class="spacer-line"></div></div>
+</section>
+
+<!-- ===== 结语 ===== -->
+<section class="section" style="padding-bottom: 40px;">
+    <div class="quote-block fade-in" style="border-left-color: var(--clay);">
+        <p style="font-size: 15px; color: var(--charcoal);">
+            这份纪念茶礼，来自十二年的善缘。<br><br>
+            白玲守着这间茶室，从未设过茶单，也未收过茶资。她相信以茶养心，是一件简单的事。我们相信，好茶也是如此——让人安静，让人回到自己。<br><br>
+            愿这一杯茶，陪你度过某个值得安静的时刻。
+        </p>
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">
+        岁月不负赶路人<br>
+        富贵偏爱有心人<br>
+        一朝开启新鸿业<br>
+        四季发财乐开怀<br>
+        用心感受每一刻幸福
+    </div>
+    <div class="footer-brand">礼安茶学 · 出品</div>
+    <div style="margin-top: 40px; font-size: 11px; color: var(--sand); letter-spacing: 0.2em;">
+        慕白茶舍 · 十二周年纪念茶礼<br>
+        好茶 · 好器 · 好生活 · 二〇二六
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
